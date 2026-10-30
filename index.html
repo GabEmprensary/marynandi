@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="img/66f47361cc.webp">
+<title>Mary Nandi Confeitaria</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Bolos, cucas, biscoitos amanteigados, empadões e docinhos feitos à mão em Pedra Branca, Palhoça. Encomendas pelo WhatsApp (48) 99918-5867.">
+<meta property="og:title" content="Mary Nandi · Confeitaria Artesanal">
+<meta property="og:description" content="Feitos à mão, fresquinhos, só para você. Encomende pelo WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<!-- Meta Pixel / Google Analytics: cole aqui os códigos quando tiver os IDs -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Karla:wght@400;500;700&display=swap">
+<style>
+/* Layout: padaria de vitrine — faixa de topo, colagem de fotos ao redor de um cartão creme, cards de categoria, mosaico */
+:root{
+  --cream:#F4ECE1; --sand:#EADFD0; --paper:#FBF7F1; --brown:#6B3A2A; --brown-2:#8A5240;
+  --ink:#2B1C17; --muted:#77625A; --rose:#B4566A; --line:#E0D2C1; --on-brown:#FBF4EC;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Karla","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --cream:#211814; --sand:#2B201B; --paper:#2F241E; --brown:#D9A58C; --brown-2:#E7BBA5;
+  --ink:#F5EBE2; --muted:#C2ADA2; --rose:#E59AAB; --line:#43342C; --on-brown:#211814; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --cream:#211814; --sand:#2B201B; --paper:#2F241E; --brown:#D9A58C; --brown-2:#E7BBA5;
+  --ink:#F5EBE2; --muted:#C2ADA2; --rose:#E59AAB; --line:#43342C; --on-brown:#211814; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--cream);color:var(--ink);font:400 17px/1.6 var(--sans)}
+.in{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+a{color:var(--brown)}
+a:focus-visible,.btn:focus-visible,summary:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:8px}
+h1,h2,h3{font-family:var(--display);font-weight:700;color:var(--ink);margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-size:clamp(32px,5vw,46px);line-height:1.1}
+.orn{display:block;margin:0 auto 10px;width:46px;height:auto;color:var(--rose)}
+.lede{color:var(--muted);max-width:56ch}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 26px;border-radius:999px;
+  font:700 15px/1 var(--sans);text-decoration:none;transition:background .2s,transform .2s;border:0}
+.btn:hover{transform:translateY(-1px)}
+.btn-brown{background:var(--brown);color:var(--on-brown)}
+.btn-brown:hover{background:var(--brown-2)}
+.btn-line{border:1.5px solid var(--brown);color:var(--brown);background:transparent}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-sm{padding:10px 20px;font-size:14px}
+
+/* faixa de topo */
+.topbar{background:var(--sand);font:500 13px/1.3 var(--sans);color:var(--muted)}
+.topbar .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:9px}
+.topbar a{color:var(--muted);text-decoration:none}
+.topbar a:hover{color:var(--brown)}
+
+/* navegação */
+.nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:15}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:16;background:var(--paper)}
+.nav .in{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:10px}
+.logo img{display:block;height:72px;width:auto}
+.menu-links{display:flex;gap:28px;font:700 14px/1 var(--sans);text-transform:uppercase;letter-spacing:.08em}
+.menu-links a{color:var(--ink);text-decoration:none}
+.menu-links a:hover{color:var(--brown)}
+
+/* capa: colagem */
+.hero{position:relative;padding-block:28px 56px}
+.collage{display:grid;grid-template-columns:1fr 1.25fr 1fr;grid-template-rows:auto auto;gap:16px;align-items:stretch}
+.collage>figure{margin:0;border-radius:14px;overflow:hidden;background:var(--sand);min-height:0}
+.collage img{display:block;width:100%;height:100%;object-fit:cover}
+.c1{grid-column:1;grid-row:1}
+.c2{grid-column:1;grid-row:2}
+.c3{grid-column:3;grid-row:1}
+.c4{grid-column:3;grid-row:2}
+.c1,.c3{aspect-ratio:4/5}.c2,.c4{aspect-ratio:1}
+.hero-card{grid-column:2;grid-row:1/3;background:var(--paper);border-radius:18px;padding:48px 36px;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  box-shadow:0 30px 60px -40px rgba(70,35,20,.45);min-width:0;position:relative}
+.hero-card .eyebrow{font:700 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--rose)}
+.hero-card h1{margin-top:16px;font-size:clamp(40px,5.4vw,64px);line-height:1.02}
+.hero-card p{margin:18px 0 0;color:var(--muted);max-width:32ch}
+.hero-card .actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px}
+.hero-card .mini-photo{width:100%;max-width:320px;margin-top:30px;border-radius:12px;overflow:hidden;aspect-ratio:3/2}
+.hero-card .mini-photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* por que */
+.why{background:var(--paper);padding-block:80px}
+.why-head{text-align:center}
+.why-head p{margin:14px auto 0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.card{background:var(--cream);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.card .body{padding:24px 24px 28px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;flex:1}
+.card h3{font-size:26px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.card .price{font:700 15px/1 var(--sans);color:var(--brown);font-variant-numeric:tabular-nums;margin-top:auto;padding-top:6px}
+
+/* encomende hoje */
+.visit{padding-block:80px}
+.visit .in{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center}
+.visit .in>div{min-width:0}
+.visit h2{font-style:italic;font-weight:600}
+.visit .lede{margin:16px 0 0}
+.visit ul{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.visit li{display:flex;gap:10px;align-items:baseline}
+.visit li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--rose);transform:translateY(-2px)}
+.visit .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:28px}
+.visit .tel{font:700 18px/1 var(--sans);color:var(--ink);user-select:all}
+.pair{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+.pair img{display:block;width:100%;height:100%;object-fit:cover;border-radius:14px;aspect-ratio:4/5}
+.pair img:first-child{aspect-ratio:auto}
+
+/* mosaico */
+.mosaic{background:var(--sand);padding-block:72px}
+.mosaic-head{text-align:center;margin-bottom:36px}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px}
+.mgrid figure{margin:0;border-radius:12px;overflow:hidden;position:relative;background:var(--cream)}
+.mgrid img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mgrid figure:hover img{transform:scale(1.04)}
+.mgrid figcaption{position:absolute;left:10px;bottom:10px;padding:6px 12px;border-radius:999px;background:var(--paper);color:var(--brown);font:700 13px/1.2 var(--sans)}
+.wide{grid-column:span 2}
+.tall{grid-row:span 2}
+
+/* cardápio */
+.menu{padding-block:80px}
+.menu-head{text-align:center;margin-bottom:40px}
+.menu-head p{margin:10px auto 0}
+.mcols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.mbox{background:var(--paper);border-radius:14px;padding:26px 24px;min-width:0}
+.mbox h3{font-size:24px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.sub-h{margin:14px 0 6px;font:700 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--rose)}
+ul.items{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.items li{display:flex;align-items:baseline;gap:8px}
+.items .n{flex:0 1 auto;min-width:0}
+.items .d{flex:1;border-bottom:2px dotted var(--line);transform:translateY(-5px);min-width:14px}
+.items .p{flex:none;font-weight:700;font-variant-numeric:tabular-nums;color:var(--brown)}
+.flavors{margin:14px 0 0;font-size:14px;color:var(--muted)}
+.flavors b{color:var(--ink)}
+
+/* dúvidas */
+.faq{padding-block:0 80px}
+.faq .in{max-width:760px}
+.faq h2{text-align:center;margin-bottom:20px}
+details{border-top:1px solid var(--line);padding-block:16px}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--brown);font:400 22px/1 var(--sans)}
+details[open] summary::after{content:"–"}
+details p{margin:10px 0 0;color:var(--muted)}
+
+/* rodapé */
+footer{background:var(--brown);color:var(--on-brown)}
+footer .in{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px;padding-block:56px 40px}
+footer .in>div{min-width:0}
+footer h3{color:var(--on-brown);font-size:20px;margin-bottom:10px}
+footer p{margin:0;opacity:.88;font-size:15px}
+footer a{color:var(--on-brown)}
+.flogo{display:inline-block;background:#FBF4EC;border-radius:14px;padding:10px 14px}
+.flogo img{display:block;height:74px;width:auto}
+.copy{grid-column:1/-1;border-top:1px solid color-mix(in srgb,var(--on-brown) 25%,transparent);padding-top:18px;font-size:13px;opacity:.75}
+
+.wa-float{display:none;position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;
+  align-items:center;gap:8px;padding:13px 18px;border-radius:999px;background:var(--brown);color:var(--on-brown);text-decoration:none;
+  font:700 14px/1 var(--sans);box-shadow:0 10px 24px -10px rgba(50,20,10,.6)}
+.wa-float svg{width:18px;height:18px}
+
+@media (max-width:900px){
+  .menu-links{display:none}
+  .collage{grid-template-columns:1fr 1fr}
+  .hero-card{grid-column:1/-1;grid-row:1;padding:40px 24px}
+  .c1{grid-column:1;grid-row:2}.c3{grid-column:2;grid-row:2}
+  .c2{grid-column:1;grid-row:3}.c4{grid-column:2;grid-row:3}
+  .c1,.c3,.c2,.c4{aspect-ratio:1}
+  .cards{grid-template-columns:1fr;max-width:440px;margin-inline:auto}
+  .visit .in{grid-template-columns:1fr}
+  .mgrid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+  .mcols{grid-template-columns:1fr 1fr}
+  footer .in{grid-template-columns:1fr 1fr}
+  footer .in>div:first-child{grid-column:1/-1}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .topbar .where{display:none}
+  .logo img{height:52px}
+  .nav .btn{padding:10px 16px}
+  .hero-card .mini-photo{display:none}
+  .mgrid{grid-auto-rows:150px;gap:10px}
+  .mgrid figcaption{font-size:12px;left:6px;bottom:6px;padding:4px 9px}
+  .mcols{grid-template-columns:1fr}
+  footer .in{grid-template-columns:1fr}
+  .wa-float{display:inline-flex}
+  footer .in{padding-bottom:110px}
+}
+/* loja */
+.shop{padding-block:80px}
+.how{list-style:none;margin:0 auto 32px;padding:0;max-width:820px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:h}
+.how li{counter-increment:h;background:var(--paper);border-radius:14px;padding:16px 16px 16px 60px;position:relative;min-width:0;display:flex;flex-direction:column;gap:2px}
+.how li::before{content:counter(h);position:absolute;left:16px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;background:var(--brown);color:var(--on-brown);font:700 15px/1 var(--sans)}
+.how b{font-family:var(--display);font-size:18px}
+.how span{font-size:14px;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px}
+.chip{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:9px 18px;font:700 14px/1 var(--sans);cursor:pointer}
+.chip:hover{border-color:var(--brown)}
+.chip.on{background:var(--brown);border-color:var(--brown);color:var(--on-brown)}
+.chip:focus-visible,.oc:focus-visible,.qty button:focus-visible,.x:focus-visible,.rm:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.pcard{background:var(--paper);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-width:0;box-shadow:0 18px 40px -34px rgba(70,35,20,.5)}
+.pimg{position:relative;background:var(--sand)}
+.pimg{background:#fff}
+.pimg img.cover{object-fit:cover;padding:0}
+.pimg img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;padding:8px}
+.pcat{position:absolute;left:12px;top:12px;background:var(--paper);color:var(--brown);border-radius:999px;padding:5px 11px;font:700 12px/1 var(--sans);letter-spacing:.04em}
+.pbody{padding:18px 18px 20px;display:flex;flex-direction:column;gap:12px;flex:1}
+.pbody h3{font-size:23px}
+.pdesc{margin:-6px 0 0;font-size:14px;color:var(--muted)}
+.opts{display:grid;gap:10px}
+.og{display:grid;gap:6px}
+.ol{font:700 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ochips{display:flex;flex-wrap:wrap;gap:6px}
+.oc{border:1.5px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;padding:7px 11px;font:500 14px/1.1 var(--sans);cursor:pointer}
+.oc:hover{border-color:var(--brown-2)}
+.oc.on{border-color:var(--brown);background:color-mix(in srgb,var(--brown) 12%,transparent);color:var(--brown);font-weight:700}
+.og select{font:500 15px/1.2 var(--sans);padding:9px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--cream);color:var(--ink)}
+.pfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:4px}
+.pprice{font:700 24px/1 var(--display);color:var(--brown);font-variant-numeric:tabular-nums}
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:var(--cream)}
+.qty button{width:38px;height:38px;border:0;background:transparent;color:var(--brown);font:700 20px/1 var(--sans);cursor:pointer}
+.qty button:hover{background:var(--sand)}
+.qty output{min-width:26px;text-align:center;font:700 16px/1 var(--sans);font-variant-numeric:tabular-nums}
+.qty.sm button{width:30px;height:30px;font-size:17px}
+.add{width:100%}
+.add.ok{background:#3F7A4E;color:#fff}
+
+/* carrinho */
+.cart-btn{position:relative;display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer}
+.cart-btn svg{width:18px;height:18px}
+.badge{min-width:22px;height:22px;border-radius:999px;background:var(--rose);color:#fff;font:700 12px/22px var(--sans);text-align:center;padding:0 6px}
+.cartbar{position:fixed;left:0;right:0;bottom:0;z-index:25;display:flex;justify-content:center;
+  padding:0 max(16px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));pointer-events:none}
+.cartbar-btn{pointer-events:auto;display:flex;align-items:center;gap:14px;width:100%;max-width:520px;border:0;cursor:pointer;
+  background:var(--brown);color:var(--on-brown);border-radius:999px;padding:14px 22px;font:700 15px/1 var(--sans);box-shadow:0 16px 34px -14px rgba(50,20,10,.7)}
+.cb-total{font-variant-numeric:tabular-nums}
+.cb-go{margin-left:auto}
+.toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom,0px));z-index:32;transform:translate(-50%,-10px);opacity:0;pointer-events:none;
+  background:var(--ink);color:var(--cream);padding:11px 18px;border-radius:999px;font:600 14px/1.3 var(--sans);transition:opacity .25s,transform .25s;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.backdrop{position:fixed;inset:0;z-index:30;background:rgba(30,15,10,.45)}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:35;width:min(440px,100%);background:var(--paper);display:flex;flex-direction:column;
+  transform:translateX(105%);transition:transform .3s ease;box-shadow:-20px 0 50px -30px rgba(40,15,10,.6);
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px);visibility:hidden}
+.drawer.open{transform:none;visibility:visible}
+.dr-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line)}
+.dr-head h2{font-size:28px}
+.x{width:40px;height:40px;border-radius:50%;border:0;background:var(--sand);color:var(--ink);font:400 26px/1 var(--sans);cursor:pointer}
+.dr-body{flex:1;overflow-y:auto;padding:18px 22px}
+.empty{text-align:center;padding-block:40px;color:var(--muted)}
+.empty p{margin:0 0 6px}
+.empty .btn{margin-top:14px}
+.clist{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.clist li{display:grid;grid-template-columns:1fr auto;grid-template-areas:"n t" "q r";gap:8px 12px;padding-block:14px;border-bottom:1px solid var(--line)}
+.ci-n{grid-area:n;font-weight:700;min-width:0}
+.ci-n span{display:block;font-weight:400;font-size:13px;color:var(--muted)}
+.ci-t{grid-area:t;color:var(--brown);font-variant-numeric:tabular-nums}
+.clist .qty{grid-area:q;justify-self:start}
+.rm{grid-area:r;justify-self:end;align-self:center;border:0;background:none;color:var(--muted);font:500 13px/1 var(--sans);text-decoration:underline;cursor:pointer}
+.ctotal{display:flex;justify-content:space-between;align-items:baseline;padding-block:16px 6px;font-size:18px}
+.ctotal strong{font:700 26px/1 var(--display);color:var(--brown);font-variant-numeric:tabular-nums}
+.cform{display:grid;gap:6px;margin-top:14px;padding-top:16px;border-top:1px solid var(--line)}
+.fstep{margin:0 0 4px;font:700 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--rose)}
+.cform label,.cform legend{font-weight:700;font-size:14px;margin-top:8px}
+.cform input:not([type=radio]),.cform textarea{font:400 16px/1.3 var(--sans);padding:11px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--cream);color:var(--ink);width:100%}
+.cform fieldset{border:0;margin:0;padding:0}
+.opt{font-weight:400;color:var(--muted)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{margin:0;text-align:center;padding:11px;border-radius:10px;border:1.5px solid var(--line);cursor:pointer;font-weight:700}
+.seg input:checked+label{border-color:var(--brown);background:color-mix(in srgb,var(--brown) 12%,transparent);color:var(--brown)}
+.seg input:focus-visible+label{outline:2px solid var(--rose);outline-offset:2px}
+.hint{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.err{margin:6px 0 0;color:#B3261E;font-weight:700;font-size:14px;min-height:1px}
+.dr-foot{padding:14px 22px 18px;border-top:1px solid var(--line);text-align:center}
+.btn-wa{width:100%;background:#1F7A4D;color:#fff;padding:16px}
+.btn-wa:hover{background:#18663F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .err{color:#FF9B8F}}
+:root[data-theme="dark"] .err{color:#FF9B8F}
+@media (max-width:900px){.how{grid-template-columns:1fr;max-width:440px}}
+@media (max-width:560px){.pgrid{grid-template-columns:1fr}.nav .cart-btn .ct-l{display:none}}
+
+/* pagamento */
+.seg label small{display:block;font-weight:400;font-size:12px;color:var(--muted);margin-top:2px}
+.btn-pay{width:100%;padding:16px}
+.btn:disabled{opacity:.6;cursor:wait}
+.co-wrap{position:fixed;inset:0;z-index:45;background:rgba(30,15,10,.55);display:grid;place-items:center;
+  padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.co{width:min(440px,100%);max-height:100%;overflow-y:auto;background:var(--paper);border-radius:18px;box-shadow:0 30px 60px -20px rgba(30,10,5,.6)}
+.co-test{margin:0;background:#F6D77A;color:#3A2A00;text-align:center;font:700 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:9px;border-radius:18px 18px 0 0}
+.co-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px 0}
+.co-head h2{font-size:28px}
+#co-pay,.co-done{padding:14px 22px 22px}
+.co-sum{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px;color:var(--muted)}
+.co-sum li{display:flex;justify-content:space-between;gap:12px}
+.co-sum li span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.co-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+.co-total strong{font:700 26px/1 var(--display);color:var(--brown);font-variant-numeric:tabular-nums}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--sand);padding:4px;border-radius:12px;margin-top:16px}
+.tab{border:0;background:transparent;border-radius:9px;padding:10px;font:700 14px/1 var(--sans);color:var(--muted);cursor:pointer}
+.tab.on{background:var(--paper);color:var(--brown);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.tab:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.m-panel{display:flex;gap:16px;align-items:center;padding-block:16px}
+.m-panel p{margin:0;font-size:14px;color:var(--muted)}
+.m-panel b{color:var(--ink)}
+#qr{flex:none;width:112px;height:112px;border-radius:8px;border:1px solid var(--line);image-rendering:pixelated}
+.card-ill{flex:none;width:112px;height:72px;border-radius:10px;background:linear-gradient(135deg,var(--brown),var(--rose));position:relative}
+.card-ill span{position:absolute;left:12px;height:6px;border-radius:3px;background:rgba(255,255,255,.7)}
+.card-ill span:nth-child(1){top:14px;width:22px;height:16px;border-radius:4px;background:#F6D77A}
+.card-ill span:nth-child(2){top:44px;width:80px}
+.card-ill span:nth-child(3){top:56px;width:40px}
+.co-actions{display:grid;gap:8px}
+.co-done{text-align:center}
+.co-done h3{font-size:26px;margin-top:8px}
+.co-done p{margin:8px 0 0}
+.co-done .btn{width:100%;margin-top:16px}
+.ok-badge{width:64px;height:64px;margin:6px auto 0;border-radius:50%;background:#1F7A4D;color:#fff;display:grid;place-items:center;font:700 32px/1 var(--sans)}
+@media (max-width:420px){.m-panel{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="in">
+    <span>Encomendas pelo WhatsApp: <strong>(48) 99918-5867</strong></span>
+    <span class="where">Pedra Branca · Palhoça, SC · <a href="https://www.instagram.com/marinandi_confeitariaartesanal/" target="_blank" rel="noopener">Instagram</a></span>
+  </div>
+</div>
+
+<nav class="nav" aria-label="Principal">
+  <div class="in">
+    <a class="logo" href="#inicio"><img src="img/66f47361cc.webp" alt="Mary Nandi Confeitaria Artesanal" width="330" height="238"></a>
+    <div class="menu-links"><a href="#inicio">Início</a><a href="#produtos">Produtos</a><a href="#cardapio">Pedir</a><a href="#fotos">Fotos</a></div>
+    <button type="button" class="btn btn-brown btn-sm cart-btn" id="nav-cart" aria-label="Abrir carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="ct-l">Meu pedido</span><span class="badge" id="nav-count" hidden>0</span></button>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="in">
+    <div class="collage">
+      <figure class="c1"><img src="img/c9f2a1b969.webp" alt="Pacotinhos de biscoitos amanteigados em bandejas de madeira com pés dourados"></figure>
+      <figure class="c2"><img src="img/d4428af7f5.webp" alt="Bolo de limão com cobertura e raspas de limão"></figure>
+      <div class="hero-card">
+        <span class="eyebrow">Confeitaria artesanal</span>
+        <h1>Feito à mão, fresquinho, só para você</h1>
+        <p>Bolos, cucas, biscoitos amanteigados e docinhos com o aconchego do sabor caseiro.</p>
+        <div class="actions">
+          <a class="btn btn-brown" href="#cardapio">Fazer meu pedido</a>
+          <a class="btn btn-line" href="#cardapio">Montar meu pedido</a>
+        </div>
+        <div class="mini-photo"><img src="img/5014e5b13c.webp" alt="Bolos, cucas e tortas da Mary Nandi lado a lado"></div>
+      </div>
+      <figure class="c3"><img src="img/06612bf833.webp" alt="Biscoitos banhados no chocolate em bandeja de madeira"></figure>
+      <figure class="c4"><img src="img/ed38666659.webp" alt="Cuca de farofa redonda com o selo Mary Nandi"></figure>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="why" id="produtos" aria-labelledby="why">
+    <div class="in">
+      <div class="why-head">
+        <svg class="orn" viewBox="0 0 48 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 10h14M32 10h14"/><path d="M24 4c-3 3-3 9 0 12 3-3 3-9 0-12Z" fill="currentColor"/><circle cx="19" cy="10" r="1.6" fill="currentColor"/><circle cx="29" cy="10" r="1.6" fill="currentColor"/></svg>
+        <h2 id="why">Por que escolher a Mary?</h2>
+        <p class="lede">Tudo é preparado em pequenas fornadas, só depois que você encomenda. Por isso chega fresquinho, com cara e gosto de casa.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <img src="img/13ff1b4d0a.webp" alt="Três bolos de chocolate com granulado" loading="lazy">
+          <div class="body">
+            <h3>Bolos caseiros</h3>
+            <p>Limão, chocolate, cenoura, laranja, milho, integral de banana e mesclado.</p>
+            <span class="price">a partir de R$ 24,00</span>
+            <a class="btn btn-brown btn-sm" href="#cardapio">Escolher e pedir</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="img/a60b99a296.webp" alt="Pacotinhos de biscoitos amanteigados com laço amarelo" loading="lazy">
+          <div class="body">
+            <h3>Biscoitos amanteigados</h3>
+            <p>Oito sabores, em potes de 100 g e 150 g. Perfeitos para presentear.</p>
+            <span class="price">a partir de R$ 10,00</span>
+            <a class="btn btn-brown btn-sm" href="#cardapio">Escolher e pedir</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="img/dc2e89efe7.webp" alt="Três cucas de farofa embaladas" loading="lazy">
+          <div class="body">
+            <h3>Cucas e empadões</h3>
+            <p>Cuca de farofa em quatro sabores e empadão de frango ou camarão.</p>
+            <span class="price">a partir de R$ 26,00</span>
+            <a class="btn btn-brown btn-sm" href="#cardapio">Escolher e pedir</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" aria-labelledby="visit">
+    <div class="in">
+      <div>
+        <h2 id="visit">Encomende hoje</h2>
+        <p class="lede">Monte seu pedido aqui no site, coloque no carrinho e envie pelo WhatsApp com um toque. Ela confirma a data, o pagamento e a retirada ou entrega.</p>
+        <ul>
+          <li>Café da tarde com bolo e cuca</li>
+          <li>Potinhos de biscoito para presente</li>
+          <li>Encomendas para festas e reuniões</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-brown" href="#cardapio">Montar meu pedido</a>
+          <span class="tel">(48) 99918-5867</span>
+        </div>
+      </div>
+      <div class="pair">
+        <img src="img/cec6393de4.webp" alt="Quatro pacotinhos de biscoitos amanteigados sortidos" loading="lazy">
+        <img src="img/f2ddb8e1fb.webp" alt="Empadão de frango dourado" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="mosaic" id="fotos" aria-labelledby="fotos-h">
+    <div class="in">
+      <div class="mosaic-head"><svg class="orn" viewBox="0 0 48 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 10h14M32 10h14"/><path d="M24 4c-3 3-3 9 0 12 3-3 3-9 0-12Z" fill="currentColor"/><circle cx="19" cy="10" r="1.6" fill="currentColor"/><circle cx="29" cy="10" r="1.6" fill="currentColor"/></svg><h2 id="fotos-h">Da nossa mesa</h2></div>
+      <div class="mgrid">
+        <figure class="tall"><img src="img/e213e5139d.webp" alt="Bolo de cenoura com cobertura de chocolate" loading="lazy"><figcaption>Cenoura com chocolate</figcaption></figure>
+        <figure class="wide"><img src="img/078db4f737.webp" alt="Coleção de bolos, cucas e biscoitos Mary Nandi" loading="lazy"><figcaption>A mesa completa</figcaption></figure>
+        <figure><img src="img/c3659b72b9.webp" alt="Biscoitos amanteigados com geleia" loading="lazy"><figcaption>Amanteigados</figcaption></figure>
+        <figure><img src="img/cfbe365126.webp" alt="Bolo de chocolate com granulado" loading="lazy"><figcaption>Chocolate</figcaption></figure>
+        <figure class="wide"><img src="img/f4ede836ec.webp" alt="Empadões de frango e camarão" loading="lazy"><figcaption>Empadões</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="shop" id="cardapio" aria-labelledby="card">
+    <div class="in">
+      <div class="menu-head">
+        <svg class="orn" viewBox="0 0 48 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 10h14M32 10h14"/><path d="M24 4c-3 3-3 9 0 12 3-3 3-9 0-12Z" fill="currentColor"/><circle cx="19" cy="10" r="1.6" fill="currentColor"/><circle cx="29" cy="10" r="1.6" fill="currentColor"/></svg>
+        <h2 id="card">Monte seu pedido</h2>
+        <p class="lede">Escolha os produtos, coloque no carrinho e mande tudo para a Mary pelo WhatsApp de uma vez.</p>
+      </div>
+      <ol class="how">
+        <li><b>Escolha</b><span>Selecione o sabor e a quantidade.</span></li>
+        <li><b>Adicione</b><span>Clique em “Adicionar ao pedido”.</span></li>
+        <li><b>Envie</b><span>Abra o carrinho e envie pelo WhatsApp.</span></li>
+      </ol>
+      <div class="filters" role="tablist" aria-label="Categorias">
+        <button type="button" class="chip on" data-cat="Todos" id="f-todos">Todos</button>
+        <button type="button" class="chip" data-cat="Bolos" id="f-bolos">Bolos</button>
+        <button type="button" class="chip" data-cat="Cucas" id="f-cucas">Cucas</button>
+        <button type="button" class="chip" data-cat="Biscoitos" id="f-biscoitos">Biscoitos</button>
+        <button type="button" class="chip" data-cat="Salgados" id="f-salgados">Salgados</button>
+        <button type="button" class="chip" data-cat="Docinhos" id="f-docinhos">Docinhos</button>
+      </div>
+      <div class="pgrid" id="pgrid"></div>
+    </div>
+  </section>
+
+  <section class="faq" aria-labelledby="duv">
+    <div class="in">
+      <h2 id="duv">Dúvidas</h2>
+      <details><summary>Com quanto tempo preciso encomendar?</summary><p>Cada pedido é feito sob encomenda, então o melhor é avisar com alguns dias de antecedência. Se for para amanhã, chame e a Mary diz se consegue.</p></details>
+      <details><summary>Como recebo meu pedido?</summary><p>A Mary combina a retirada ou a entrega direto com você pelo WhatsApp, conforme o seu bairro.</p></details>
+      <details><summary>A Mary faz encomendas para festas?</summary><p>Sim. Mande a quantidade de pessoas e a data para receber uma sugestão de cardápio e orçamento.</p></details>
+      <details><summary>Quais as formas de pagamento?</summary><p>São informadas na confirmação do pedido pelo WhatsApp.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="in">
+    <div>
+      <span class="flogo"><img src="img/66f47361cc.webp" alt="Mary Nandi Confeitaria Artesanal" loading="lazy"></span>
+      <p style="margin-top:14px">Feito com amor para transformar qualquer dia em um momento especial.</p>
+    </div>
+    <div>
+      <h3>Encomendas</h3>
+      <p>WhatsApp (48) 99918-5867<br><a href="https://wa.me/5548999185867?text=Ol%C3%A1%20Mary!%20Vi%20o%20card%C3%A1pio%20no%20site%20e%20quero%20encomendar%3A%20%0A%0APara%20o%20dia%3A%20" target="_blank" rel="noopener">Chamar no WhatsApp</a></p>
+    </div>
+    <div>
+      <h3>Onde estamos</h3>
+      <p>Pedra Branca · Palhoça, SC<br><a href="https://www.instagram.com/marinandi_confeitariaartesanal/" target="_blank" rel="noopener">@marinandi_confeitariaartesanal</a></p>
+    </div>
+    <p class="copy">© 2026 Mary Nandi Confeitaria Artesanal</p>
+  </div>
+</footer>
+
+<div class="cartbar" id="cartbar" hidden>
+  <button type="button" class="cartbar-btn" id="cartbar-btn">
+    <span class="cb-count" id="cb-count">0 itens</span>
+    <span class="cb-total" id="cb-total">R$ 0,00</span>
+    <span class="cb-go">Ver pedido →</span>
+  </button>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="backdrop" id="backdrop" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-h" aria-hidden="true">
+  <div class="dr-head">
+    <h2 id="drawer-h">Seu pedido</h2>
+    <button type="button" class="x" id="close-cart" aria-label="Fechar carrinho">×</button>
+  </div>
+  <div class="dr-body">
+    <div class="empty" id="empty">
+      <p><b>Seu carrinho está vazio.</b></p>
+      <p>Escolha um produto e clique em “Adicionar ao pedido”.</p>
+      <button type="button" class="btn btn-line btn-sm" id="go-shop">Ver produtos</button>
+    </div>
+    <ul class="clist" id="clist"></ul>
+    <div class="ctotal" id="ctotal-row" hidden><span>Total</span><strong id="ctotal">R$ 0,00</strong></div>
+
+    <form class="cform" id="cform" novalidate hidden>
+      <p class="fstep">Seus dados</p>
+      <label for="c-nome">Seu nome</label>
+      <input id="c-nome" name="nome" autocomplete="name" placeholder="Ex.: Ana Souza" required>
+      <label for="c-data">Para quando?</label>
+      <input id="c-data" name="data" type="date" required>
+      <fieldset>
+        <legend>Como quer receber?</legend>
+        <div class="seg">
+          <input type="radio" name="receber" id="r-retirada" value="Retirada" checked><label for="r-retirada">Retirar</label>
+          <input type="radio" name="receber" id="r-entrega" value="Entrega"><label for="r-entrega">Entrega</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Como quer pagar?</legend>
+        <div class="seg">
+          <input type="radio" name="pagar" id="pg-agora" value="online" checked><label for="pg-agora">Pagar agora<small>Pix ou cartão</small></label>
+          <input type="radio" name="pagar" id="pg-depois" value="depois"><label for="pg-depois">Pagar depois<small>na retirada ou entrega</small></label>
+        </div>
+      </fieldset>
+      <div id="end-wrap" hidden>
+        <label for="c-end">Endereço de entrega</label>
+        <input id="c-end" name="endereco" autocomplete="street-address" placeholder="Rua, número e bairro">
+        <p class="hint">A taxa de entrega é combinada com a Mary pelo WhatsApp.</p>
+      </div>
+      <label for="c-obs">Observações <span class="opt">(opcional)</span></label>
+      <textarea id="c-obs" name="obs" rows="2" placeholder="Ex.: é para um aniversário"></textarea>
+      <p class="err" id="err" role="alert"></p>
+    </form>
+  </div>
+  <div class="dr-foot" id="dr-foot" hidden>
+    <button type="button" class="btn btn-brown btn-pay" id="pay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span id="pay-l">Ir para o pagamento</span></button>
+    <a class="btn btn-wa" id="send" href="#" target="_blank" rel="noopener" hidden><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>Enviar pedido pelo WhatsApp</a>
+    <p class="hint" id="foot-hint">Pagamento seguro pelo Mercado Pago. Depois você envia o pedido pelo WhatsApp.</p>
+  </div>
+</aside>
+
+<div class="co-wrap" id="co" role="dialog" aria-modal="true" aria-labelledby="co-h" hidden>
+  <div class="co">
+    <p class="co-test">Modo de teste · nenhum valor é cobrado</p>
+    <div class="co-head"><h2 id="co-h">Pagamento</h2><button type="button" class="x" id="co-close" aria-label="Fechar pagamento">×</button></div>
+    <div id="co-pay">
+      <ul class="co-sum" id="co-sum"></ul>
+      <div class="co-total"><span>Total a pagar</span><strong id="co-total">R$ 0,00</strong></div>
+      <div class="tabs" role="tablist" aria-label="Forma de pagamento">
+        <button type="button" class="tab on" role="tab" aria-selected="true" data-m="Pix" id="t-pix">Pix</button>
+        <button type="button" class="tab" role="tab" aria-selected="false" data-m="Cartão" id="t-cartao">Cartão</button>
+      </div>
+      <div class="m-panel" id="m-pix">
+        <canvas id="qr" width="168" height="168" aria-label="QR Code de exemplo"></canvas>
+        <p>No site publicado, aqui aparece o <b>QR Code do Pix</b> gerado pelo Mercado Pago, com o valor exato do pedido.</p>
+      </div>
+      <div class="m-panel" id="m-cartao" hidden>
+        <div class="card-ill" aria-hidden="true"><span></span><span></span><span></span></div>
+        <p>No site publicado, o cliente digita o cartão na <b>página segura do Mercado Pago</b>. O site da Mary nunca vê os dados do cartão.</p>
+      </div>
+      <div class="co-actions">
+        <button type="button" class="btn btn-wa" id="sim-ok">Simular pagamento aprovado</button>
+        <button type="button" class="btn btn-line" id="sim-no">Simular pagamento recusado</button>
+      </div>
+      <p class="err" id="co-err" role="alert"></p>
+    </div>
+    <div class="co-done" id="co-done" hidden>
+      <div class="ok-badge" aria-hidden="true">✓</div>
+      <h3>Pagamento aprovado!</h3>
+      <p>Pedido <b id="co-id">MN-0000</b> · <span id="co-paid">R$ 0,00</span> via <span id="co-met">Pix</span></p>
+      <p class="hint">Último passo: envie o pedido para a Mary confirmar a data.</p>
+      <a class="btn btn-wa" id="send2" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>Enviar pedido pelo WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+const PHONE='5548999185867';
+/* Pagamento: 'teste' simula o checkout aqui no site.
+   'mercadopago' chama o servidor da VPS (pasta servidor/), que cria o checkout real. */
+const PAGAMENTO={modo:'desligado',api:'/api/checkout'};
+let paid=null;
+const IMG={"n_cookies": "img/157d0b1ae7.webp", "n_cupcake": "img/9aa7fdaf58.webp", "n_palha": "img/9b4072b2f5.webp", "p01": "img/ad9f32c96b.webp", "p02": "img/9dba85b252.webp", "p03": "img/2f2c1adcab.webp", "p04": "img/d4428af7f5.webp", "p05": "img/ed38666659.webp", "p07": "img/c0e8484956.webp", "p08": "img/d50138e839.webp", "p09": "img/4b86886879.webp", "p10": "img/cfbe365126.webp", "p11": "img/9759c80ba0.webp", "p13": "img/f4ede836ec.webp", "p14": "img/f2ddb8e1fb.webp", "p21": "img/6dec0c1982.webp", "p27": "img/e213e5139d.webp", "p29": "img/1473518a9f.webp"};
+const brl=v=>'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const SABORES=['Coco','Nata','Amendoim','Leite ninho','Goiabadinha','Laranja','Limão','Areia de cascaes'];
+const P=[
+ {id:'bolo',cat:'Bolos',name:'Bolo caseiro',desc:'Bolo de forma, fofinho, para o café da tarde.',
+  groups:[{k:'Sabor',c:[['Limão',27,'p04'],['Chocolate',30,'p10'],['Cenoura com chocolate',30,'p27'],['Laranja',24,'p02'],['Milho',24,'p29'],['Integral de banana',35,'p01'],['Mesclado',25,'p11']]}],
+  price:s=>({'Limão':27,'Chocolate':30,'Cenoura com chocolate':30,'Laranja':24,'Milho':24,'Integral de banana':35,'Mesclado':25})[s.Sabor]},
+ {id:'cuca',cat:'Cucas',name:'Cuca de farofa',desc:'Farofa dourada e crocante, receita de família.',img:'p05',
+  groups:[{k:'Sabor',c:[['Tradicional'],['Com banana',0,'p03'],['Frutas vermelhas'],['Doce de leite']]}],price:()=>26},
+ {id:'bisc',cat:'Biscoitos',name:'Biscoitos amanteigados',desc:'Potinho de biscoitos que derretem na boca.',img:'p08',
+  groups:[{k:'Tipo',c:[['Tradicional',0,'p08'],['Com chocolate',0,'p09']]},{k:'Pote',c:[['100 g'],['150 g']]},{k:'Sabor',select:true,only:{Tipo:'Tradicional'},c:SABORES.map(x=>[x])}],
+  price:s=>({'Tradicional':{'100 g':10,'150 g':15},'Com chocolate':{'100 g':13,'150 g':18}})[s.Tipo][s.Pote]},
+ {id:'emp',cat:'Salgados',name:'Empadão',desc:'Massa amanteigada e recheio caprichado.',img:'p14',
+  groups:[{k:'Tamanho',c:[['M'],['G']]},{k:'Recheio',c:[['Frango',0,'p14'],['Camarão',0,'p13']]}],
+  price:s=>({M:{'Frango':45,'Camarão':60},G:{'Frango':85,'Camarão':120}})[s.Tamanho][s.Recheio]},
+ {id:'pmel',cat:'Docinhos',name:'Pão de mel',desc:'Pacote com 5 unidades, cobertos de chocolate.',img:'p07',groups:[],price:()=>20},
+ {id:'palha',cat:'Docinhos',name:'Palha italiana',desc:'Embalada individualmente.',img:'n_palha',groups:[],price:()=>15},
+ {id:'cook',cat:'Docinhos',name:'Cookies',desc:'Pacote com 5 unidades, com gotas de chocolate.',img:'n_cookies',groups:[],price:()=>20},
+ {id:'alf',cat:'Docinhos',name:'Alfajor',desc:'Recheado com doce de leite e banhado no chocolate.',img:'p21',groups:[],price:()=>14},
+ {id:'cup',cat:'Docinhos',name:'Cupcake',desc:'Com gotas de chocolate.',img:'n_cupcake',groups:[],price:()=>7}
+];
+const sel={};
+let cart=[];
+try{const s=JSON.parse(localStorage.getItem('mn-cart')||'[]');if(Array.isArray(s))cart=s.filter(i=>i&&i.key&&i.pid&&i.qty>0)}catch(e){}
+const save=()=>{try{localStorage.setItem('mn-cart',JSON.stringify(cart))}catch(e){}};
+const $=id=>document.getElementById(id);
+const grid=$('pgrid');
+
+function visibleGroups(p){return p.groups.filter(g=>!g.only||Object.entries(g.only).every(([k,v])=>sel[p.id][k]===v))}
+function curKey(p){let im=p.img;p.groups.forEach(g=>{const c=g.c.find(c=>c[0]===sel[p.id][g.k]);if(c&&c[2])im=c[2]});return im}
+function label(p){const v=visibleGroups(p).map(g=>sel[p.id][g.k]);return p.name+(v.length?' – '+v.join(', '):'')}
+
+function render(){
+  grid.innerHTML='';
+  P.forEach(p=>{
+    if(!sel[p.id]){sel[p.id]={qty:1};p.groups.forEach(g=>sel[p.id][g.k]=g.c[0][0])}
+    const a=document.createElement('article');a.className='pcard';a.dataset.cat=p.cat;a.id='p-'+p.id;
+    a.innerHTML=`<div class="pimg"><img alt="${p.name}"><span class="pcat">${p.cat}</span></div>
+      <div class="pbody"><h3>${p.name}</h3><p class="pdesc">${p.desc}</p><div class="opts"></div>
+      <div class="pfoot"><span class="pprice"></span>
+      <div class="qty" aria-label="Quantidade"><button type="button" class="q-" aria-label="Diminuir">−</button><output>1</output><button type="button" class="q+" aria-label="Aumentar">+</button></div></div>
+      <button type="button" class="btn btn-brown add">Adicionar ao pedido</button></div>`;
+    grid.appendChild(a);update(p);
+    a.querySelector('.q-').onclick=()=>{sel[p.id].qty=Math.max(1,sel[p.id].qty-1);update(p)};
+    a.querySelector('.q\\+').onclick=()=>{sel[p.id].qty=Math.min(50,sel[p.id].qty+1);update(p)};
+    a.querySelector('.add').onclick=()=>add(p);
+  });
+  applyFilter();
+}
+function update(p){
+  const a=$('p-'+p.id),s=sel[p.id],o=a.querySelector('.opts');o.innerHTML='';
+  visibleGroups(p).forEach(g=>{
+    const w=document.createElement('div');w.className='og';
+    const gid=`o-${p.id}-${g.k}`.replace(/\s/g,'');
+    if(g.select){
+      w.innerHTML=`<label class="ol" for="${gid}">${g.k}</label><select id="${gid}">${g.c.map(c=>`<option${c[0]===s[g.k]?' selected':''}>${c[0]}</option>`).join('')}</select>`;
+      w.querySelector('select').onchange=e=>{s[g.k]=e.target.value};
+    }else{
+      w.innerHTML=`<span class="ol">${g.k}</span><div class="ochips"></div>`;
+      g.c.forEach(c=>{const b=document.createElement('button');b.type='button';b.className='oc'+(c[0]===s[g.k]?' on':'');b.textContent=c[0];
+        b.setAttribute('aria-pressed',c[0]===s[g.k]);b.onclick=()=>{s[g.k]=c[0];update(p)};w.querySelector('.ochips').appendChild(b)});
+    }
+    o.appendChild(w);
+  });
+  {const k=curKey(p),im=a.querySelector('img');im.src=IMG[k];im.classList.toggle('cover',k.startsWith('m_'))}
+  a.querySelector('.pprice').textContent=brl(p.price(s));
+  a.querySelector('output').textContent=s.qty;
+}
+function add(p){
+  const s=sel[p.id],name=label(p),price=p.price(s),key=p.id+'|'+name;
+  const it=cart.find(i=>i.key===key);
+  if(it)it.qty+=s.qty;else cart.push({key,name,price,qty:s.qty,pid:p.id,opts:Object.fromEntries(visibleGroups(p).map(g=>[g.k,s[g.k]]))});
+  paid=null;
+  toast(`${s.qty}× ${name} adicionado`);
+  s.qty=1;update(p);save();drawCart();
+  const btn=$('p-'+p.id).querySelector('.add');btn.textContent='Adicionado ✓';btn.classList.add('ok');
+  setTimeout(()=>{btn.textContent='Adicionar ao pedido';btn.classList.remove('ok')},1400);
+}
+let tt;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2200)}
+
+let cat='Todos';
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{cat=c.dataset.cat;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c));applyFilter()});
+function applyFilter(){grid.querySelectorAll('.pcard').forEach(a=>a.hidden=!(cat==='Todos'||a.dataset.cat===cat))}
+
+function totals(){return cart.reduce((a,i)=>({n:a.n+i.qty,t:a.t+i.qty*i.price}),{n:0,t:0})}
+function drawCart(){
+  const {n,t}=totals(),list=$('clist');list.innerHTML='';
+  cart.forEach((i,idx)=>{
+    const li=document.createElement('li');
+    li.innerHTML=`<div class="ci-n">${i.name}<span>${brl(i.price)} cada</span></div>
+      <div class="qty sm"><button type="button" aria-label="Diminuir">−</button><output>${i.qty}</output><button type="button" aria-label="Aumentar">+</button></div>
+      <strong class="ci-t">${brl(i.price*i.qty)}</strong><button type="button" class="rm" aria-label="Remover ${i.name}">Remover</button>`;
+    const [m,pl]=li.querySelectorAll('.qty button');
+    m.onclick=()=>{i.qty--;if(i.qty<1)cart.splice(idx,1);paid=null;save();drawCart()};
+    pl.onclick=()=>{i.qty++;paid=null;save();drawCart()};
+    li.querySelector('.rm').onclick=()=>{cart.splice(idx,1);paid=null;save();drawCart()};
+    list.appendChild(li);
+  });
+  const has=cart.length>0;
+  $('empty').hidden=has;$('ctotal-row').hidden=!has;$('cform').hidden=!has;$('dr-foot').hidden=!has;
+  $('ctotal').textContent=brl(t);
+  $('cartbar').hidden=!has;$('cb-count').textContent=n+(n===1?' item':' itens');$('cb-total').textContent=brl(t);
+  $('nav-count').textContent=n;$('nav-count').hidden=!has;
+  footMode();buildLink();
+}
+function fmtDate(v){if(!v)return'';const[y,m,d]=v.split('-');return`${d}/${m}/${y}`}
+function message(){
+  const {t}=totals(),f=$('cform');
+  const rec=f.querySelector('input[name=receber]:checked').value;
+  let m='Olá, Mary! Quero fazer uma encomenda pelo site:\n\n';
+  cart.forEach(i=>m+=`• ${i.qty}× ${i.name} — ${brl(i.price*i.qty)}\n`);
+  m+=`\n*Total: ${brl(t)}*\n\n`;
+  m+=`Nome: ${$('c-nome').value.trim()}\nPara o dia: ${fmtDate($('c-data').value)}\nRecebimento: ${rec}`;
+  if(rec==='Entrega'&&$('c-end').value.trim())m+=`\nEndereço: ${$('c-end').value.trim()}`;
+  if($('c-obs').value.trim())m+=`\nObservações: ${$('c-obs').value.trim()}`;
+  m+=paid?`\n\n✅ *Pago online* (${paid.met}) · Pedido ${paid.id}${PAGAMENTO.modo==='teste'?' · TESTE':''}`:'\n\nPagamento: na retirada ou entrega';
+  return m;
+}
+function buildLink(){const u='https://wa.me/'+PHONE+'?text='+encodeURIComponent(message());$('send').href=u;$('send2').href=u}
+const online=()=>$('pg-agora').checked;
+function footMode(){const o=online();$('pay').hidden=!o;$('send').hidden=o;$('pay-l').textContent='Pagar '+brl(totals().t);
+  $('foot-hint').textContent=o?'Pagamento seguro pelo Mercado Pago. Depois você envia o pedido pelo WhatsApp.':'Abre o WhatsApp com a mensagem pronta. É só apertar enviar.'}
+$('cform').addEventListener('input',()=>{$('end-wrap').hidden=!$('r-entrega').checked;$('err').textContent='';footMode();buildLink()});
+$('cform').addEventListener('change',()=>{$('end-wrap').hidden=!$('r-entrega').checked;footMode();buildLink()});
+$('cform').addEventListener('submit',e=>e.preventDefault());
+function validate(){
+  const miss=[];if(!$('c-nome').value.trim())miss.push('seu nome');if(!$('c-data').value)miss.push('a data');
+  if($('r-entrega').checked&&!$('c-end').value.trim())miss.push('o endereço');
+  if(miss.length){$('err').textContent='Falta preencher '+miss.join(', ').replace(/, ([^,]*)$/,' e $1')+'.';
+    (!$('c-nome').value.trim()?$('c-nome'):!$('c-data').value?$('c-data'):$('c-end')).focus();return false}
+  return true;
+}
+$('send').addEventListener('click',e=>{if(!validate()){e.preventDefault();return}buildLink();setTimeout(finish,300)});
+
+/* ---------- pagamento ---------- */
+let met='Pix';
+function cliente(){return{nome:$('c-nome').value.trim(),data:$('c-data').value,receber:$('cform').querySelector('input[name=receber]:checked').value,
+  endereco:$('c-end').value.trim(),obs:$('c-obs').value.trim()}}
+$('pay').addEventListener('click',async()=>{
+  if(!validate())return;
+  if(PAGAMENTO.modo==='mercadopago'){
+    const b=$('pay');b.disabled=true;$('pay-l').textContent='Abrindo pagamento…';
+    try{
+      try{localStorage.setItem('mn-cliente',JSON.stringify(cliente()))}catch(e){}
+      const r=await fetch(PAGAMENTO.api,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({itens:cart.map(i=>({id:i.pid,opcoes:i.opts,qtd:i.qty})),cliente:cliente()})});
+      const j=await r.json();if(!r.ok||!j.url)throw new Error(j.erro||'erro');
+      location.href=j.url;
+    }catch(e){$('err').textContent='Não foi possível abrir o pagamento. Tente de novo ou escolha "Pagar depois".';b.disabled=false;footMode()}
+    return;
+  }
+  openCo();
+});
+function openCo(){
+  const {t}=totals();
+  $('co-sum').innerHTML=cart.map(i=>`<li><span>${i.qty}× ${i.name}</span><span>${brl(i.price*i.qty)}</span></li>`).join('');
+  $('co-total').textContent=brl(t);$('co-err').textContent='';
+  $('co-pay').hidden=false;$('co-done').hidden=true;$('co').hidden=false;drawQR();setTimeout(()=>$('co-close').focus(),50);
+}
+function closeCo(){$('co').hidden=true;$('pay').focus()}
+$('co-close').onclick=closeCo;
+$('co').addEventListener('click',e=>{if(e.target.id==='co')closeCo()});
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{met=b.dataset.m;
+  document.querySelectorAll('.tab').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b)});
+  $('m-pix').hidden=met!=='Pix';$('m-cartao').hidden=met==='Pix';});
+function drawQR(){
+  const c=$('qr'),x=c.getContext('2d'),n=21,s=8;x.fillStyle='#fff';x.fillRect(0,0,168,168);x.fillStyle='#2B1C17';
+  let seed=cart.length*97+Math.round(totals().t*100);const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++){const f=(i<7&&j<7)||(i<7&&j>13)||(i>13&&j<7);
+    if(f){const a=i%14,b=j%14,e=a===0||a===6||b===0||b===6||(a>1&&a<5&&b>1&&b<5);if(e)x.fillRect(j*s,i*s,s,s)}else if(rnd()>.55)x.fillRect(j*s,i*s,s,s)}
+}
+$('sim-ok').onclick=()=>{
+  paid={id:'MN-'+String(Math.floor(1000+Math.random()*9000)),met,valor:totals().t};
+  $('co-id').textContent=paid.id;$('co-paid').textContent=brl(paid.valor);$('co-met').textContent=met;
+  $('co-pay').hidden=true;$('co-done').hidden=false;buildLink();setTimeout(()=>$('send2').focus(),50);
+};
+$('sim-no').onclick=()=>{$('co-err').textContent='Pagamento recusado pelo banco. Tente outra forma de pagamento ou escolha "Pagar depois".'};
+$('send2').addEventListener('click',()=>{buildLink();setTimeout(finish,300)});
+function finish(){
+  cart=[];paid=null;save();$('co').hidden=true;closeCart();
+  ['c-nome','c-data','c-end','c-obs'].forEach(id=>$(id).value='');drawCart();toast('Pedido enviado! A Mary vai confirmar pelo WhatsApp.');
+}
+const today=new Date();$('c-data').min=new Date(today-today.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+
+let lastFocus;
+function openCart(){lastFocus=document.activeElement;$('drawer').classList.add('open');$('drawer').setAttribute('aria-hidden','false');$('backdrop').hidden=false;document.body.style.overflow='hidden';setTimeout(()=>$('close-cart').focus(),50)}
+function closeCart(){$('drawer').classList.remove('open');$('drawer').setAttribute('aria-hidden','true');$('backdrop').hidden=true;document.body.style.overflow='';lastFocus&&lastFocus.focus&&lastFocus.focus()}
+$('nav-cart').onclick=openCart;$('cartbar-btn').onclick=openCart;$('close-cart').onclick=closeCart;$('backdrop').onclick=closeCart;
+$('go-shop').onclick=()=>{closeCart();$('cardapio').scrollIntoView({behavior:'smooth'})};
+document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(!$('co').hidden){closeCo();return}if($('drawer').classList.contains('open'))closeCart()});
+
+if(PAGAMENTO.modo==='desligado'){$('pg-depois').checked=true;$('pg-agora').closest('fieldset').hidden=true;}
+render();drawCart();
+})();
+</script>
+</body>
+</html>
