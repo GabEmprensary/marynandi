@@ -282,6 +282,8 @@ footer a{color:var(--on-brown)}
 .seg label{margin:0;text-align:center;padding:11px;border-radius:10px;border:1.5px solid var(--line);cursor:pointer;font-weight:700}
 .seg input:checked+label{border-color:var(--brown);background:color-mix(in srgb,var(--brown) 12%,transparent);color:var(--brown)}
 .seg input:focus-visible+label{outline:2px solid var(--rose);outline-offset:2px}
+.pickup{margin-top:10px;padding:12px 14px;border-radius:10px;background:var(--cream);border:1.5px solid var(--line)}
+.pickup-t{margin:0;font-weight:700}
 .hint{margin:4px 0 0;font-size:13px;color:var(--muted)}
 .err{margin:6px 0 0;color:#B3261E;font-weight:700;font-size:14px;min-height:1px}
 .dr-foot{padding:14px 22px 18px;border-top:1px solid var(--line);text-align:center}
@@ -411,7 +413,7 @@ footer a{color:var(--on-brown)}
     <div class="in">
       <div>
         <h2 id="visit">Encomende hoje</h2>
-        <p class="lede">Monte seu pedido aqui no site, coloque no carrinho e envie pelo WhatsApp com um toque. Ela confirma a data, o pagamento e a retirada ou entrega.</p>
+        <p class="lede">Monte seu pedido aqui no site, coloque no carrinho e envie pelo WhatsApp com um toque. Ela confirma a data, o pagamento e o horário da retirada.</p>
         <ul>
           <li>Café da tarde com bolo e cuca</li>
           <li>Potinhos de biscoito para presente</li>
@@ -470,7 +472,7 @@ footer a{color:var(--on-brown)}
     <div class="in">
       <h2 id="duv">Dúvidas</h2>
       <details><summary>Com quanto tempo preciso encomendar?</summary><p>Cada pedido é feito sob encomenda, então o melhor é avisar com alguns dias de antecedência. Se for para amanhã, chame e a Mary diz se consegue.</p></details>
-      <details><summary>Como recebo meu pedido?</summary><p>A Mary combina a retirada ou a entrega direto com você pelo WhatsApp, conforme o seu bairro.</p></details>
+      <details><summary>Como recebo meu pedido?</summary><p>Os pedidos são retirados em Pedra Branca, Palhoça/SC. A Mary combina o horário da retirada com você pelo WhatsApp.</p></details>
       <details><summary>A Mary faz encomendas para festas?</summary><p>Sim. Mande a quantidade de pessoas e a data para receber uma sugestão de cardápio e orçamento.</p></details>
       <details><summary>Quais as formas de pagamento?</summary><p>São informadas na confirmação do pedido pelo WhatsApp.</p></details>
     </div>
@@ -526,18 +528,17 @@ footer a{color:var(--on-brown)}
       <input id="c-nome" name="nome" autocomplete="name" placeholder="Ex.: Ana Souza" required>
       <label for="c-data">Para quando?</label>
       <input id="c-data" name="data" type="date" required>
-      <fieldset>
-        <legend>Como quer receber?</legend>
-        <div class="seg">
-          <input type="radio" name="receber" id="r-retirada" value="Retirada" checked><label for="r-retirada">Retirar</label>
-          <input type="radio" name="receber" id="r-entrega" value="Entrega"><label for="r-entrega">Entrega</label>
-        </div>
-      </fieldset>
+      <div class="pickup">
+        <input type="radio" name="receber" id="r-retirada" value="Retirada" checked hidden>
+        <input type="radio" name="receber" id="r-entrega" value="Entrega" hidden disabled>
+        <p class="pickup-t">Retirada no local</p>
+        <p class="hint">Pedra Branca, Palhoça/SC. A Mary combina o horário com você pelo WhatsApp.</p>
+      </div>
       <fieldset>
         <legend>Como quer pagar?</legend>
         <div class="seg">
           <input type="radio" name="pagar" id="pg-agora" value="online" checked><label for="pg-agora">Pagar agora<small>Pix ou cartão</small></label>
-          <input type="radio" name="pagar" id="pg-depois" value="depois"><label for="pg-depois">Pagar depois<small>na retirada ou entrega</small></label>
+          <input type="radio" name="pagar" id="pg-depois" value="depois"><label for="pg-depois">Pagar depois<small>na retirada</small></label>
         </div>
       </fieldset>
       <div id="end-wrap" hidden>
@@ -714,7 +715,7 @@ function message(){
   m+=`Nome: ${$('c-nome').value.trim()}\nPara o dia: ${fmtDate($('c-data').value)}\nRecebimento: ${rec}`;
   if(rec==='Entrega'&&$('c-end').value.trim())m+=`\nEndereço: ${$('c-end').value.trim()}`;
   if($('c-obs').value.trim())m+=`\nObservações: ${$('c-obs').value.trim()}`;
-  m+=paid?`\n\n✅ *Pago online* (${paid.met}) · Pedido ${paid.id}${PAGAMENTO.modo==='teste'?' · TESTE':''}`:'\n\nPagamento: na retirada ou entrega';
+  m+=paid?`\n\n✅ *Pago online* (${paid.met}) · Pedido ${paid.id}${PAGAMENTO.modo==='teste'?' · TESTE':''}`:'\n\nPagamento: na retirada';
   return m;
 }
 function buildLink(){const u='https://wa.me/'+PHONE+'?text='+encodeURIComponent(message());$('send').href=u;$('send2').href=u}
