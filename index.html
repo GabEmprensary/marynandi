@@ -600,7 +600,7 @@ const PHONE='5548999185867';
    'mercadopago' chama o servidor da VPS (pasta servidor/), que cria o checkout real. */
 const PAGAMENTO={modo:'desligado',api:'/api/checkout'};
 let paid=null;
-const IMG={"n_cookies": "img/157d0b1ae7.webp", "n_cupcake": "img/9aa7fdaf58.webp", "n_palha": "img/9b4072b2f5.webp", "p01": "img/ad9f32c96b.webp", "p02": "img/9dba85b252.webp", "p03": "img/2f2c1adcab.webp", "p04": "img/d4428af7f5.webp", "p05": "img/ed38666659.webp", "p07": "img/c0e8484956.webp", "p08": "img/d50138e839.webp", "p09": "img/4b86886879.webp", "p10": "img/cfbe365126.webp", "p11": "img/9759c80ba0.webp", "p13": "img/f4ede836ec.webp", "p14": "img/f2ddb8e1fb.webp", "p21": "img/6dec0c1982.webp", "p27": "img/e213e5139d.webp", "p29": "img/1473518a9f.webp"};
+const IMG={"rech": "img/biscoito-recheado.webp", "n_cookies": "img/157d0b1ae7.webp", "n_cupcake": "img/9aa7fdaf58.webp", "n_palha": "img/9b4072b2f5.webp", "p01": "img/ad9f32c96b.webp", "p02": "img/9dba85b252.webp", "p03": "img/2f2c1adcab.webp", "p04": "img/d4428af7f5.webp", "p05": "img/ed38666659.webp", "p07": "img/c0e8484956.webp", "p08": "img/d50138e839.webp", "p09": "img/4b86886879.webp", "p10": "img/cfbe365126.webp", "p11": "img/9759c80ba0.webp", "p13": "img/f4ede836ec.webp", "p14": "img/f2ddb8e1fb.webp", "p21": "img/6dec0c1982.webp", "p27": "img/e213e5139d.webp", "p29": "img/1473518a9f.webp"};
 const brl=v=>'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
 const SABORES=['Coco','Nata','Amendoim','Leite ninho','Goiabadinha','Laranja','Limão','Areia de cascaes'];
 const P=[
@@ -612,6 +612,7 @@ const P=[
  {id:'bisc',cat:'Biscoitos',name:'Biscoitos amanteigados',desc:'Potinho de biscoitos que derretem na boca.',img:'p08',
   groups:[{k:'Tipo',c:[['Tradicional',0,'p08'],['Com chocolate',0,'p09']]},{k:'Pote',c:[['100 g'],['150 g']]},{k:'Sabor',select:true,only:{Tipo:'Tradicional'},c:SABORES.map(x=>[x])}],
   price:s=>({'Tradicional':{'100 g':10,'150 g':15},'Com chocolate':{'100 g':13,'150 g':18}})[s.Tipo][s.Pote]},
+ {id:'rech',cat:'Biscoitos',name:'Biscoito amanteigado recheado',desc:'Recheado com doce de leite. Pote fechado, ótimo para presentear.',img:'rech',groups:[],price:()=>20},
  {id:'emp',cat:'Salgados',name:'Empadão',desc:'Massa amanteigada e recheio caprichado.',img:'p14',
   groups:[{k:'Tamanho',c:[['M'],['G']]},{k:'Recheio',c:[['Frango',0,'p14'],['Camarão',0,'p13']]}],
   price:s=>({M:{'Frango':45,'Camarão':60},G:{'Frango':85,'Camarão':120}})[s.Tamanho][s.Recheio]},
